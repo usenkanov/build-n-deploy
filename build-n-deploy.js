@@ -13,6 +13,10 @@ var exec = require('child_process').exec,
 
 var logStash = '/var/log/build-n-deploy/';
 
+if (!fs.existsSync(logStash)){
+    fs.mkdirSync(logStash);
+}
+
 function execute(command, callback) {
     exec(command, function (error, stdout, stderr) {
         if (error) {
